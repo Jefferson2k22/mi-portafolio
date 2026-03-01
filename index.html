@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberPortfolio | Future Tech</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --neon-cyan: #00f3ff;
+            --neon-pink: #ff00ff;
+            --neon-yellow: #f3ec19;
+            --dark-bg: #0a0a0c;
+            --card-bg: #16161a;
+            --text-light: #ffffff;
+            --transition: all 0.3s ease;
+        }
+
+        [data-bs-theme="light"] {
+            --dark-bg: #f4f4f9;
+            --card-bg: #ffffff;
+            --text-light: #1a1a1a;
+            --neon-cyan: #007bff;
+            --neon-pink: #d63384;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            font-family: 'Roboto', sans-serif;
+            transition: var(--transition);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .navbar-brand {
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Navbar Custom */
+        .navbar {
+            background: rgba(10, 10, 12, 0.9) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--neon-cyan);
+        }
+
+        [data-bs-theme="light"] .navbar {
+            background: rgba(255, 255, 255, 0.9) !important;
+        }
+
+        /* Neon Effects */
+        .neon-text {
+            text-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan);
+            color: var(--neon-cyan);
+        }
+
+        .neon-border {
+            border: 1px solid var(--neon-cyan);
+            box-shadow: 0 0 10px var(--neon-cyan);
+        }
+
+        .btn-neon {
+            border: 2px solid var(--neon-pink);
+            color: var(--neon-pink);
+            background: transparent;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+
+        .btn-neon:hover {
+            background: var(--neon-pink);
+            color: white;
+            box-shadow: 0 0 20px var(--neon-pink);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 150px 0 100px;
+            background: linear-gradient(45deg, rgba(0,0,0,0.7), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--neon-cyan);
+            box-shadow: 0 0 25px var(--neon-cyan);
+        }
+
+        /* Cards */
+        .custom-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 15px;
+            transition: var(--transition);
+            height: 100%;
+        }
+
+        .custom-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 15px var(--neon-cyan);
+        }
+
+        /* Filter System */
+        .filter-btn {
+            cursor: pointer;
+            padding: 8px 20px;
+            margin: 5px;
+            border-radius: 20px;
+            border: 1px solid var(--neon-cyan);
+            display: inline-block;
+        }
+
+        .filter-btn.active {
+            background: var(--neon-cyan);
+            color: #000;
+        }
+
+        .project-card { display: block; }
+
+        /* Footer */
+        footer {
+            border-top: 2px solid var(--neon-pink);
+            padding: 50px 0;
+        }
+
+        .social-icon {
+            font-size: 1.5rem;
+            color: var(--neon-yellow);
+            margin: 0 15px;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            color: white;
+            text-shadow: 0 0 10px var(--neon-yellow);
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--neon-cyan);
+            color: black;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand neon-text" href="#">NEON_DEV</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="#hero">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#stack">Stack</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#proyectos">Proyectos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experiencia">Experiencia</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <button class="btn btn-outline-info" id="themeToggle">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero text-center text-white">
+        <div class="container">
+            <img src="https://via.placeholder.com/200" alt="Perfil" class="profile-img mb-4">
+            <h1 class="display-3 fw-bold neon-text">HACKER_NAME</h1>
+            <p class="lead mb-4">Full Stack Developer | UI Designer | Cyber Enthusiast ⚡</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="#proyectos" class="btn btn-neon">Ver Proyectos</a>
+                <a href="#contacto" class="btn btn-outline-light">Contacto</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stack Tecnológico -->
+    <section id="stack" class="py-5 container">
+        <h2 class="text-center mb-5 neon-text">TECH_STACK</h2>
+        <div class="row g-4 text-center">
+            <div class="col-6 col-md-3">
+                <div class="custom-card p-4">
+                    <i class="fab fa-html5 fa-3x mb-3 text-warning"></i>
+                    <h4>HTML5</h4>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="custom-card p-4">
+                    <i class="fab fa-react fa-3x mb-3 text-info"></i>
+                    <h4>React</h4>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="custom-card p-4">
+                    <i class="fab fa-node-js fa-3x mb-3 text-success"></i>
+                    <h4>Node.js</h4>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="custom-card p-4">
+                    <i class="fab fa-figma fa-3x mb-3 text-danger"></i>
+                    <h4>Figma</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proyectos -->
+    <section id="proyectos" class="py-5 bg-opacity-10 bg-info">
+        <div class="container">
+            <h2 class="text-center mb-4 neon-text">MIS_PROYECTOS</h2>
+            
+            <!-- Filtros -->
+            <div class="text-center mb-5">
+                <div class="filter-btn active" onclick="filterProjects('all')">Todos</div>
+                <div class="filter-btn" onclick="filterProjects('web')">Web</div>
+                <div class="filter-btn" onclick="filterProjects('app')">App</div>
+                <div class="filter-btn" onclick="filterProjects('design')">Diseño</div>
+            </div>
+
+            <div class="row g-4" id="projectContainer">
+                <!-- 9 Tarjetas -->
+                <div class="col-md-4 project-card web">
+                    <div class="custom-card overflow-hidden">
+                        <img src="https://via.placeholder.com/400x250/00f3ff/000000?text=Web+Project+1" class="img-fluid" alt="Web">
+                        <div class="p-3">
+                            <h5>E-Commerce Cyber</h5>
+                            <p class="small">Plataforma de ventas con interfaz futurista.</p>
+                            <span class="badge bg-info">Web</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 project-card app">
+                    <div class="custom-card overflow-hidden">
+                        <img src="https://via.placeholder.com/400x250/ff00ff/ffffff?text=App+Project+1" class="img-fluid" alt="App">
+                        <div class="p-3">
+                            <h5>Neural App</h5>
+                            <p class="small">Gestión de tareas con IA integrada.</p>
+                            <span class="badge bg-danger">App</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 project-card design">
+                    <div class="custom-card overflow-hidden">
+                        <img src="https://via.placeholder.com/400x250/f3ec19/000000?text=Design+1" class="img-fluid" alt="Design">
+                        <div class="p-3">
+                            <h5>UI Kit Neon</h5>
+                            <p class="small">Set de componentes para diseño web.</p>
+                            <span class="badge bg-warning text-dark">Diseño</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Repetir estructuras similares para completar las 9 -->
+                <!-- Web 2, 3 | App 2, 3 | Design 2, 3 -->
+                <div class="col-md-4 project-card web">
+                    <div class="custom-card overflow-hidden">
+                        <img src="https://via.placeholder.com/400x250/00f3ff/000000?text=Web+Project+2" class="img-fluid" alt="Web">
+                        <div class="p-3"><h5>Data Dash</h5><span class="badge bg-info">Web</span></div>
+                    </div>
+                </div>
+                <div class="col-md-4 project-card app">
+                    <div class="custom-card overflow-hidden">
+                        <img src="https://via.placeholder.com/400x250/ff00ff/ffffff?text=App+Project+2" class="img-fluid" alt="App">
+                        <div class="p-3"><h5>Crypto Wallet</h5><span class="badge bg-danger">App</span></div>
+                    </div>
+                </div>
+                <div class="col-md-4 project-card design">
+                    <div class="custom-card overflow-hidden">
+                        <img src="https://via.placeholder.com/400x250/f3ec19/000000?text=Design+2" class="img-fluid" alt="Design">
+                        <div class="p-3"><h5>Cyber Branding</h5><span class="badge bg-warning text-dark">Diseño</span></div>
+                    </div>
+                </div>
+                <div class="col-md-4 project-card web">
+                    <div class="custom-card overflow-hidden">
+                        <img src="https://via.placeholder.com/400x250/00f3ff/000000?text=Web+Project+3" class="img-fluid" alt="Web">
+                        <div class="p-3"><h5>Social Net</h5><span class="badge bg-info">Web</span></div>
+                    </div>
+                </div>
+                <div class="col-md-4 project-card app">
+                    <div class="custom-card overflow-hidden">
+                        <img src="https://via.placeholder.com/400x250/ff00ff/ffffff?text=App+Project+3" class="img-fluid" alt="App">
+                        <div class="p-3"><h5>Health Tracker</h5><span class="badge bg-danger">App</span></div>
+                    </div>
+                </div>
+                <div class="col-md-4 project-card design">
+                    <div class="custom-card overflow-hidden">
+                        <img src="https://via.placeholder.com/400x250/f3ec19/000000?text=Design+3" class="img-fluid" alt="Design">
+                        <div class="p-3"><h5>Icon Pack</h5><span class="badge bg-warning text-dark">Diseño</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experiencia Laboral -->
+    <section id="experiencia" class="py-5 container">
+        <h2 class="text-center mb-5 neon-text">LOGS_EXPERIENCIA</h2>
+        <div class="row justify-content-center g-4">
+            <!-- Tarjeta 1 -->
+            <div class="col-md-4">
+                <div class="custom-card p-4 text-center neon-border">
+                    <div class="mb-3 text-info"><i class="fas fa-building fa-2x"></i></div>
+                    <h4>Global Tech</h4>
+                    <p class="text-muted">Sr. Developer (2021 - Actual)</p>
+                    <p>Liderazgo de proyectos Frontend y arquitectura escalable.</p>
+                </div>
+            </div>
+            <!-- Tarjeta 2 -->
+            <div class="col-md-4">
+                <div class="custom-card p-4 text-center neon-border">
+                    <div class="mb-3 text-info"><i class="fas fa-code fa-2x"></i></div>
+                    <h4>Cyber Agency</h4>
+                    <p class="text-muted">Web Designer (2019 - 2021)</p>
+                    <p>Creación de interfaces inmersivas y experiencias de usuario.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center text-white">
+        <div class="container">
+            <h3 class="neon-text mb-4">SÍGUEME_EN_LA_RED</h3>
+            <div class="mb-4">
+                <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p class="small text-muted">© 2024 NEON_DEV. Todos los derechos reservados bajo Licencia MIT.</p>
+        </div>
+    </footer>
+
+    <!-- Volver Arriba -->
+    <a href="#" class="scroll-top"><i class="fas fa-arrow-up"></i></a>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Lógica de Modo Dark/Light
+        const themeToggle = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+        const themeIcon = themeToggle.querySelector('i');
+
+        themeToggle.addEventListener('click', () => {
+            if (htmlElement.getAttribute('data-bs-theme') === 'dark') {
+                htmlElement.setAttribute('data-bs-theme', 'light');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+            } else {
+                htmlElement.setAttribute('data-bs-theme', 'dark');
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+            }
+        });
+
+        // Lógica de Filtros de Proyectos
+        function filterProjects(category) {
+            const cards = document.querySelectorAll('.project-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            cards.forEach(card => {
+                if (category === 'all' || card.classList.contains(category)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
